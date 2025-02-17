@@ -11,6 +11,9 @@ extern "C" {
 }
 
 /// Application memory usage in bytes
+/// ```
+///  assert!(app_memory_usage_fetcher::get_memory_usage_bytes() > 0);
+/// ```
 #[inline]
 pub fn get_memory_usage_bytes() -> i64 {
     unsafe { getMemoryUsage() }

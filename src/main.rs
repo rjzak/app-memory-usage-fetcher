@@ -1,11 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-use app_memory_usage_fetcher;
 use std::process::ExitCode;
 
 fn main() -> Result<ExitCode, ExitCode> {
     if app_memory_usage_fetcher::get_memory_usage_bytes() < 0 {
-        eprintln!("Operating system not supported.");
+        eprintln!("Operating system {} not supported.", std::env::consts::OS);
         Err(ExitCode::FAILURE)
     } else {
         println!(
