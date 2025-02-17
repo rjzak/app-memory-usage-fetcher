@@ -39,3 +39,11 @@ jobs:
 
     - name: cargo test
       run: cargo test
+
+  check-spdx-headers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: enarx/spdx@b5bfdd4410071bf058c8333d0e70020001524b6b # master
+        with:
+          licenses: Apache-2.0
