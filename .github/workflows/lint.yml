@@ -1,0 +1,41 @@
+name: Lint
+on: [ push, pull_request ]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Cargo clippy & fmt
+    runs-on: ubuntu-latest
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+      with:
+        egress-policy: block
+        allowed-endpoints: >
+          archive.ubuntu.com:80
+          azure.archive.ubuntu.com:80
+          crates.io:443
+          esm.ubuntu.com:443
+          github.com:443
+          index.crates.io:443
+          motd.ubuntu.com:443
+          ppa.launchpadcontent.net:443
+          security.ubuntu.com:80
+          static.crates.io:443
+          static.rust-lang.org:443
+
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+    - name: Setup Rust toolchain
+      run: rustup show && rustup update
+
+    - name: cargo fmt
+      run: cargo fmt -- --check
+
+    - name: cargo clippy
+      run: cargo clippy --all-features --tests -- -D warnings
+
+    - name: cargo test
+      run: cargo test
