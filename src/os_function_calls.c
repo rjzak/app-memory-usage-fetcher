@@ -8,7 +8,7 @@
 long getMemoryUsage() {
     struct rusage usage;
     if(0 == getrusage(RUSAGE_SELF, &usage))
-        return usage.ru_maxrss; // bytes
+        return usage.ru_maxrss / 1024; // kilobytes to bytes
     else
         return 0;
 }
@@ -20,10 +20,12 @@ long getMemoryUsage() {
 long getMemoryUsage() {
     PROCESS_MEMORY_COUNTERS info;
     GetProcessMemoryInfo( GetCurrentProcess(), &info, sizeof(info) );
-    return (long) info.PeakWorkingSetSize;
+    return (long) info.PeakWorkingSetSize; // bytes
 }
 
 #else
+
+#warning "Rust crate `app-memory-usage-fetcher` doesn't support this operating system. Maybe file an issue at https://github.com/rjzak/app-memory-usage-fetcher/issues?"
 
 long getMemoryUsage() {
     return -1;

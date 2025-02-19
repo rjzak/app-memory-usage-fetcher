@@ -9,7 +9,7 @@ use std::num::NonZeroU64;
 pub const APP_MEMORY_USAGE_FETCHER_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 extern "C" {
-    fn getMemoryUsage() -> Option<NonZeroU64>;
+    fn getMemoryUsage() -> i64;
 }
 
 /// Application memory usage in bytes
@@ -18,32 +18,37 @@ extern "C" {
 /// ```
 #[inline]
 pub fn get_memory_usage_bytes() -> Option<NonZeroU64> {
-    unsafe { getMemoryUsage() }
+    let bytes = unsafe { getMemoryUsage() };
+    if bytes <= 0 {
+        None
+    } else {
+        NonZeroU64::new(bytes as u64)
+    }
 }
 
 /// Application memory usage in kilobytes
 #[inline]
 pub fn get_memory_usage_kbytes() -> Option<f64> {
-    unsafe { getMemoryUsage().map(|m| m.get() as f64 / 1024.0f64) }
+    get_memory_usage_bytes().map(|m| m.get() as f64 / 1024.0f64)
 }
 
 /// Application memory usage in megabytes
 #[inline]
 pub fn get_memory_usage_mbytes() -> Option<f64> {
     const MEGABYTE: f64 = 1024.0f64 * 1024.0f64;
-    unsafe { getMemoryUsage().map(|m| m.get() as f64 / MEGABYTE) }
+    get_memory_usage_bytes().map(|m| m.get() as f64 / MEGABYTE)
 }
 
 /// Application memory usage in gigabytes
 #[inline]
 pub fn get_memory_usage_gbytes() -> Option<f64> {
     const GIGABYTE: f64 = 1024.0f64 * 1024.0f64 * 1024.0f64;
-    unsafe { getMemoryUsage().map(|m| m.get() as f64 / GIGABYTE) }
+    get_memory_usage_bytes().map(|m| m.get() as f64 / GIGABYTE)
 }
 
 /// Application memory usage in terabytes
 #[inline]
 pub fn get_memory_usage_tbytes() -> Option<f64> {
     const TERABYTE: f64 = 1024.0f64 * 1024.0f64 * 1024.0f64 * 1024.0f64;
-    unsafe { getMemoryUsage().map(|m| m.get() as f64 / TERABYTE) }
+    get_memory_usage_bytes().map(|m| m.get() as f64 / TERABYTE)
 }
