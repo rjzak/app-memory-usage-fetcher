@@ -1,5 +1,6 @@
 [![Build](https://github.com/rjzak/app-memory-usage-fetcher/actions/workflows/build.yml/badge.svg)](https://github.com/rjzak/app-memory-usage-fetcher/actions/workflows/build.yml)
 [![Lint](https://github.com/rjzak/app-memory-usage-fetcher/actions/workflows/lint.yml/badge.svg)](https://github.com/rjzak/app-memory-usage-fetcher/actions/workflows/lint.yml)
+[![Documentation](https://docs.rs/app-memory-usage-fetcher/badge.svg)](https://docs.rs/app-memory-usage-fetcher/)
 [![Crates.io Version](https://img.shields.io/crates/v/app-memory-usage-fetcher)](https://crates.io/crates/app-memory-usage-fetcher)
 
 ## Application Memory Usage Fetcher
