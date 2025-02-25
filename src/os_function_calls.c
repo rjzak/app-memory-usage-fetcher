@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-#if defined(__APPLE__) || defined(__linux__)
-
-#include <sys/time.h>
+#if defined(__APPLE__) || defined(__linux__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__) || defined(_AIX)
 #include <sys/resource.h>
 
 long getMemoryUsage() {
@@ -30,6 +28,5 @@ long getMemoryUsage() {
 long getMemoryUsage() {
     return -1;
 }
-
 
 #endif
