@@ -6,7 +6,7 @@ license = "Apache-2.0"
 authors = ["Richard Zak<richard.j.zak@gmail.com>"]
 repository = "https://github.com/rjzak/app-memory-usage-fetcher"
 description = "Query a supported operating system to get the amount of memory used by the current Rust application."
-categories = ["os"]
+categories = ["os", "os::unix-apis", "os::windows-apis"]
 
 [build-dependencies]
 cc = "1.2"

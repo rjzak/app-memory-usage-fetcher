@@ -26,27 +26,27 @@ pub fn get_memory_usage_bytes() -> Option<NonZeroU64> {
     }
 }
 
-/// Application memory usage in kilobytes
+/// Application memory usage in kilobytes (KiB)
 #[inline]
 pub fn get_memory_usage_kbytes() -> Option<f64> {
     get_memory_usage_bytes().map(|m| m.get() as f64 / 1024.0f64)
 }
 
-/// Application memory usage in megabytes
+/// Application memory usage in megabytes (MiB)
 #[inline]
 pub fn get_memory_usage_mbytes() -> Option<f64> {
     const MEGABYTE: f64 = 1024.0f64 * 1024.0f64;
     get_memory_usage_bytes().map(|m| m.get() as f64 / MEGABYTE)
 }
 
-/// Application memory usage in gigabytes
+/// Application memory usage in gigabytes (GiB)
 #[inline]
 pub fn get_memory_usage_gbytes() -> Option<f64> {
     const GIGABYTE: f64 = 1024.0f64 * 1024.0f64 * 1024.0f64;
     get_memory_usage_bytes().map(|m| m.get() as f64 / GIGABYTE)
 }
 
-/// Application memory usage in terabytes
+/// Application memory usage in terabytes (TiB)
 #[inline]
 pub fn get_memory_usage_tbytes() -> Option<f64> {
     const TERABYTE: f64 = 1024.0f64 * 1024.0f64 * 1024.0f64 * 1024.0f64;
