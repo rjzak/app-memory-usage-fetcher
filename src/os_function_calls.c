@@ -1,12 +1,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
-#if defined(__APPLE__) || defined(__linux__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__) || defined(_AIX)
+#if defined(__APPLE__) || defined(__linux__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__) || defined(_AIX) || defined(__ANDROID__) || defined(__sun)
 #include <sys/resource.h>
 
 long getMemoryUsage() {
     struct rusage usage;
     if(0 == getrusage(RUSAGE_SELF, &usage))
-        return usage.ru_maxrss / 1024; // kilobytes to bytes
+        #if defined(__sun)
+            return usage.ru_maxrss; // Solaris reports bytes
+        #else
+            return usage.ru_maxrss / 1024; // kilobytes to bytes
+        #endif
     else
         return 0;
 }
