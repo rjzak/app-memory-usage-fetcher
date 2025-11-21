@@ -26,7 +26,7 @@ jobs:
           static.crates.io:443
           static.rust-lang.org:443
 
-    - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+    - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
 
     - name: Setup Rust toolchain
       run: rustup show && rustup update
@@ -43,7 +43,7 @@ jobs:
   check-spdx-headers:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - uses: enarx/spdx@b5bfdd4410071bf058c8333d0e70020001524b6b # master
         with:
           licenses: Apache-2.0
