@@ -9,7 +9,7 @@ long getMemoryUsage() {
         #if defined(__sun)
             return usage.ru_maxrss; // Solaris reports bytes
         #else
-            return usage.ru_maxrss / 1024; // kilobytes to bytes
+            return usage.ru_maxrss * 1024; // kilobytes to bytes
         #endif
     else
         return 0;
