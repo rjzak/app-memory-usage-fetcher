@@ -23,6 +23,10 @@ fn main() -> Result<ExitCode, ExitCode> {
             "Memory usage: {:.2} gigabytes.",
             app_memory_usage_fetcher::get_memory_usage_gbytes().unwrap()
         );
+        println!(
+            "Memory usage str: {}",
+            app_memory_usage_fetcher::get_memory_usage_string().unwrap()
+        );
         Ok(ExitCode::SUCCESS)
     }
 }
