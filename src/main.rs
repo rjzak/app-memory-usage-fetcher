@@ -2,10 +2,10 @@
 
 use std::process::ExitCode;
 
-fn main() -> Result<ExitCode, ExitCode> {
+fn main() -> ExitCode {
     if app_memory_usage_fetcher::get_memory_usage_bytes().is_none() {
         eprintln!("Operating system {} not supported.", std::env::consts::OS);
-        Err(ExitCode::FAILURE)
+        ExitCode::FAILURE
     } else {
         println!(
             "Memory usage: {} bytes.",
@@ -27,6 +27,6 @@ fn main() -> Result<ExitCode, ExitCode> {
             "Memory usage str: {}",
             app_memory_usage_fetcher::get_memory_usage_string().unwrap()
         );
-        Ok(ExitCode::SUCCESS)
+        ExitCode::SUCCESS
     }
 }

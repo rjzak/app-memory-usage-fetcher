@@ -19,8 +19,13 @@ const GIGABYTE: f64 = 1024.0f64 * 1024.0f64 * 1024.0f64;
 const TERABYTE: f64 = 1024.0f64 * 1024.0f64 * 1024.0f64 * 1024.0f64;
 
 /// Application memory usage in bytes
+///
+/// Returns `None` if the operating system is not supported.
+///
 /// ```
-///  assert!(app_memory_usage_fetcher::get_memory_usage_bytes().is_some());
+///  if let Some(bytes) = app_memory_usage_fetcher::get_memory_usage_bytes() {
+///      println!("Memory usage: {} bytes", bytes.get());
+///  }
 /// ```
 #[inline]
 #[must_use]
@@ -34,6 +39,12 @@ pub fn get_memory_usage_bytes() -> Option<NonZeroU64> {
 }
 
 /// Application memory usage in kilobytes (KiB)
+///
+/// ```
+/// if let Some(kb) = app_memory_usage_fetcher::get_memory_usage_kbytes() {
+///     println!("Memory usage: {} KB", kb);
+/// }
+/// ```
 #[inline]
 #[must_use]
 pub fn get_memory_usage_kbytes() -> Option<f64> {
@@ -42,6 +53,12 @@ pub fn get_memory_usage_kbytes() -> Option<f64> {
 }
 
 /// Application memory usage in megabytes (MiB)
+///
+/// ```
+/// if let Some(mb) = app_memory_usage_fetcher::get_memory_usage_mbytes() {
+///     println!("Memory usage: {} MB", mb);
+/// }
+/// ```
 #[inline]
 #[must_use]
 pub fn get_memory_usage_mbytes() -> Option<f64> {
@@ -50,6 +67,12 @@ pub fn get_memory_usage_mbytes() -> Option<f64> {
 }
 
 /// Application memory usage in gigabytes (GiB)
+///
+/// ```
+/// if let Some(gb) = app_memory_usage_fetcher::get_memory_usage_gbytes() {
+///     println!("Memory usage: {} GB", gb);
+/// }
+/// ```
 #[inline]
 #[must_use]
 pub fn get_memory_usage_gbytes() -> Option<f64> {
@@ -58,6 +81,12 @@ pub fn get_memory_usage_gbytes() -> Option<f64> {
 }
 
 /// Application memory usage in terabytes (TiB)
+///
+/// ```
+/// if let Some(tb) = app_memory_usage_fetcher::get_memory_usage_tbytes() {
+///     println!("Memory usage: {} TB", tb);
+/// }
+/// ```
 #[inline]
 #[must_use]
 pub fn get_memory_usage_tbytes() -> Option<f64> {
@@ -69,7 +98,7 @@ pub fn get_memory_usage_tbytes() -> Option<f64> {
 ///
 /// ```
 /// if let Some(usage) = app_memory_usage_fetcher::get_memory_usage_string() {
-///     println!("Memory usage: {}", usage);
+///     println!("Memory usage: {usage}");
 /// }
 /// ```
 #[inline]
