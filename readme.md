@@ -2,6 +2,7 @@
 [![Lint](https://github.com/rjzak/app-memory-usage-fetcher/actions/workflows/lint.yml/badge.svg)](https://github.com/rjzak/app-memory-usage-fetcher/actions/workflows/lint.yml)
 [![Documentation](https://docs.rs/app-memory-usage-fetcher/badge.svg)](https://docs.rs/app-memory-usage-fetcher/)
 [![Crates.io Version](https://img.shields.io/crates/v/app-memory-usage-fetcher)](https://crates.io/crates/app-memory-usage-fetcher)
+[![Socket.dev](https://badge.socket.dev/cargo/package/app-memory-usage-fetcher/latest)](https://socket.dev/cargo/package/app-memory-usage-fetcher/overview/)
 
 ## Application Memory Usage Fetcher
 
