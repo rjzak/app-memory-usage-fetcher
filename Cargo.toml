@@ -8,6 +8,7 @@ repository = "https://github.com/rjzak/app-memory-usage-fetcher"
 description = "Query a supported operating system to get the amount of memory used by the current Rust application."
 keywords = ["ffi", "linux", "memory"]
 categories = ["os", "os::unix-apis", "os::windows-apis"]
+rust-version = "1.87.0"
 readme = "readme.md"
 
 [build-dependencies]
