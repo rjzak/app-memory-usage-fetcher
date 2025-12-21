@@ -6,8 +6,8 @@
 long getMemoryUsage() {
     struct rusage usage;
     if(0 == getrusage(RUSAGE_SELF, &usage))
-        #if defined(__sun)
-            return usage.ru_maxrss; // Solaris reports bytes
+        #if defined(__sun) || defined(__APPLE__)
+            return usage.ru_maxrss; // Solaris, macOS reports kilobytes
         #else
             return usage.ru_maxrss * 1024; // kilobytes to bytes
         #endif

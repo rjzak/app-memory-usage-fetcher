@@ -9,9 +9,6 @@
 
 use std::num::NonZeroU64;
 
-/// Library version
-pub const APP_MEMORY_USAGE_FETCHER_VERSION: &str = env!("CARGO_PKG_VERSION");
-
 extern "C" {
     fn getMemoryUsage() -> i64;
 }
